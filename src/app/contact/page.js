@@ -5,7 +5,7 @@ export default function Home() {
 
             <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8">
                 <div className="text-gray-700 w-[300px]">
-                    <p className="text-justify text-base">Submit your query here. We provide 24/7 contact support to your queries. Please don't hesitate to directly contact us.</p>
+                    <p className="text-justify text-base">Submit your query here. We provide 24/7 contact support to your queries. Please don&apos;t hesitate to directly contact us.</p>
                     <p className="mt-4">You can visit us here</p>
                     <p className="flex gap-2 text-sm">
                         <span className="font-bold">Location:</span>

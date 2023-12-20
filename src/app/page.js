@@ -1,6 +1,7 @@
 import Carousel from "@/components/carousel";
 import { FaBookReader } from "react-icons/fa";
 import { getImagesInFolder } from '../utils/cloudinary';
+import Image from "next/image";
 
 
 export default async function Home() {
@@ -13,7 +14,7 @@ export default async function Home() {
             <Carousel>
                 {carouselImages.map((item) => {
                     const { public_id, secure_url } = item;
-                    return <img
+                    return <Image
 
                         key={public_id} className="h-[450px] object-cover rounded"
 
@@ -63,7 +64,7 @@ export default async function Home() {
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ab porro omnis iure, quo dolore aliquid corporis ullam maxime mollitia ipsum, veniam quibusdam labore? Sunt minima aliquid obcaecati aperiam delectus!
                         </p>
                     </div>
-                    <img className="flex-1" src="assets/principal.jpg" alt="Principal" />
+                    <Image className="flex-1" src="assets/principal.jpg" alt="Principal" />
                 </div>
 
             </section>
@@ -73,8 +74,8 @@ export default async function Home() {
                 <h2 className="text-3xl font-bold text-center mb-8">Gallery</h2>
                 <div className="flex gap-4 justify-center md:justify-between flex-wrap">
                     {galleryImages.map((item, index) => {
-                        if (index > 10) return;
-                        return <img className="h-[200px] object-contain rounded" key={index} src={item.secure_url} alt={item.public_id} />
+                        if (index > 8) return;
+                        return <Image className="h-[200px] object-contain rounded" key={index} src={item.secure_url} alt={item.public_id} />
                     })
                     }
                 </div>
@@ -87,7 +88,7 @@ export default async function Home() {
 
                 <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8">
                     <div className="text-gray-700 w-[300px]">
-                        <p className="text-justify text-base">Submit your query here. We provide 24/7 contact support to your queries. Please don't hesitate to directly contact us.</p>
+                        <p className="text-justify text-base">Submit your query here. We provide 24/7 contact support to your queries. Please don&apos;t hesitate to directly contact us.</p>
                         <p className="mt-4">You can visit us here</p>
                         <p className="flex gap-2 text-sm">
                             <span className="font-bold">Location:</span>
