@@ -2,7 +2,6 @@
 import { MdClose } from 'react-icons/md';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useState } from 'react';
-import Image from 'next/image';
 
 export default function Navbar() {
     const [isSidebarActive, setIsActivebarActive] = useState(false);
@@ -14,7 +13,8 @@ export default function Navbar() {
     return (
         <nav className="py-4 px-6 flex justify-between items-center">
             <a href="/" className="flex items-center gap-2">
-                <Image
+                {/* // eslint-disable-next-line */}
+                <img
                     className="h-16 object-cover"
                     src="assets/logo.png" alt="School Logo" />
                 <h2 className="w-[150px] font-semibold break-all">Star School</h2>

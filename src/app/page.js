@@ -1,7 +1,6 @@
 import Carousel from "@/components/carousel";
 import { FaBookReader } from "react-icons/fa";
 import { getImagesInFolder } from '../utils/cloudinary';
-import Image from "next/image";
 
 
 export default async function Home() {
@@ -14,7 +13,8 @@ export default async function Home() {
             <Carousel>
                 {carouselImages.map((item) => {
                     const { public_id, secure_url } = item;
-                    return <Image
+                    // eslint-disable-next-line
+                    return <img
 
                         key={public_id} className="h-[450px] object-cover rounded"
 
@@ -64,7 +64,8 @@ export default async function Home() {
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ab porro omnis iure, quo dolore aliquid corporis ullam maxime mollitia ipsum, veniam quibusdam labore? Sunt minima aliquid obcaecati aperiam delectus!
                         </p>
                     </div>
-                    <Image className="flex-1" src="assets/principal.jpg" alt="Principal" />
+                    // eslint-disable-next-line
+                    <img className="flex-1" src="assets/principal.jpg" alt="Principal" />
                 </div>
 
             </section>
@@ -75,7 +76,8 @@ export default async function Home() {
                 <div className="flex gap-4 justify-center md:justify-between flex-wrap">
                     {galleryImages.map((item, index) => {
                         if (index > 8) return;
-                        return <Image className="h-[200px] object-contain rounded" key={index} src={item.secure_url} alt={item.public_id} />
+                        // eslint-disable-next-line
+                        return <img className="h-[200px] object-contain rounded" key={index} src={item.secure_url} alt={item.public_id} />
                     })
                     }
                 </div>

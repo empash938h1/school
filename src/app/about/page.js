@@ -1,4 +1,3 @@
-import Image from "next/image";
 
 export default function Home() {
     return (
@@ -17,7 +16,8 @@ export default function Home() {
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde at illo eveniet sequi molestias, dignissimos expedita, nobis animi deleniti accusamus blanditiis numquam laborum magnam quas excepturi consequuntur harum optio! Blanditiis!
                         </p>
                     </div>
-                    <Image className="flex-1 w-[300px]" src="assets/carousel3.avif" alt="wallpaper" />
+                    {/* // eslint-disable-next-line */}
+                    <img className="flex-1 w-[300px]" src="assets/carousel3.avif" alt="wallpaper" />
                 </div>
 
             </div>
@@ -35,8 +35,8 @@ export default function Home() {
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde at illo eveniet sequi molestias, dignissimos expedita, nobis animi deleniti accusamus blanditiis numquam laborum magnam quas excepturi consequuntur harum optio! Blanditiis!
                         </p>
                     </div>
-
-                    <Image className="flex-1 w-[300px]" src="assets/carousel1.jpg" alt="wallpaper" />
+                    {/* // eslint-disable-next-line */}
+                    <img className="flex-1 w-[300px]" src="assets/carousel1.jpg" alt="wallpaper" />
                 </div>
 
             </div>

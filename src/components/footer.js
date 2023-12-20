@@ -1,11 +1,11 @@
-import Image from "next/image";
 
 export default function Footer() {
     return (
 
         <footer id="#footer" className="flex flex-col md:flex-row item-center md:items-start justify-center md:justify-around pb-8">
             <div className="flex flex-col items-center md:items-start gap-4">
-                <Image
+                {/* // eslint-disable-next-line */}
+                <img
                     className="w-20 object-contain"
                     src="assets/logo.png" alt="School Logo" />
                 <h2 className="text-2xl font-semibold">Star School</h2>

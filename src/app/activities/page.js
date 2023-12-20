@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { getImagesInFolder } from '../../utils/cloudinary';
 export default async function Home() {
     const facilities = await getFacilities();
@@ -19,7 +18,8 @@ export default async function Home() {
                         </p>
                     </div>
 
-                    <Image className="flex-1 w-[300px]" src="assets/carousel3.avif" alt="wallpaper" />
+                    {/* // eslint-disable-next-line */}
+                    <img className="flex-1 w-[300px]" src="assets/carousel3.avif" alt="wallpaper" />
                 </div>
 
             </div>
@@ -30,7 +30,8 @@ export default async function Home() {
                     {facilities.map(item => {
                         const title = item.public_id.split('/')[2];
                         return (<div key={item.public_id}>
-                            <Image className="w-[250px] h-[300px] rounded-[50px] object-cover" src={item.secure_url} alt={item.public_id} />
+                            {/* // eslint-disable-next-line */}
+                            <img className="w-[250px] h-[300px] rounded-[50px] object-cover" src={item.secure_url} alt={item.public_id} />
                             <h3 className="text-center capitalize font-bold mt-2">{title}</h3>
                         </div>)
                     })}
