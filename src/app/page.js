@@ -1,113 +1,142 @@
-import Image from 'next/image'
+import Carousel from "@/components/carousel";
+import { FaBookReader } from "react-icons/fa";
+import { getImagesInFolder } from '../utils/cloudinary';
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+export default async function Home() {
+    const carouselImages = await getCarouselImages();
+    const galleryImages = await getGallery();
+    return (
+        <main className="min-h-screen flex flex-col gap-8">
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+            <Carousel>
+                {carouselImages.map((item) => {
+                    const { public_id, secure_url } = item;
+                    return <img
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+                        key={public_id} className="h-[450px] object-cover rounded"
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+                        src={secure_url} alt="carousel image" />
+
+                })}
+
+            </Carousel>
+
+            {/* services  */}
+
+            <section className="mt-20">
+                <h2 className="text-3xl font-bold text-center mb-8">What Sets Us Apart</h2>
+                <div className="flex justify-center gap-8 flex-wrap">
+                    {['Awesome Teachers', 'Documentaries', 'Outdoor Learning', 'Project Based Learning'].map((item, index) => {
+                        return (
+                            <div key={index} className="w-[200px] border border-gray-200 rounded py-4 px-4 flex flex-col gap-2">
+                                <div className="grid place-items-center">
+
+                                    <FaBookReader className="text-3xl" />
+                                </div>
+                                <h3 className="font-semibold">{item}</h3>
+                                <p className="text-gray-700 text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium, quis, maxime incidunt dignissimos ipsa cupiditate illo expedita eius</p>
+                            </div>
+                        );
+                    })
+                    }
+                </div>
+            </section>
+
+            {/* message from principal  */}
+
+            <section className="mt-20">
+                <h2 className="text-3xl font-bold text-center mb-8">Message From Principal</h2>
+                <div className="flex flex-col md:flex-row-reverse gap-4 md:gap-0 items-start px-4 md:p-0">
+
+                    <div className="flex-1 text-gray-700 text-justify">
+
+
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus perspiciatis accusantium aliquid, aut, sapiente mollitia eligendi dicta ab similique impedit maxime explicabo nesciunt saepe, inventore consequuntur alias! Nesciunt, vero.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ab porro omnis iure, quo dolore aliquid corporis ullam maxime mollitia ipsum, veniam quibusdam labore? Sunt minima aliquid obcaecati aperiam delectus!
+                        </p>
+
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repellendus perspiciatis accusantium aliquid, aut, sapiente mollitia eligendi dicta ab similique impedit maxime explicabo nesciunt saepe, inventore consequuntur alias! Nesciunt, vero.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ab porro omnis iure, quo dolore aliquid corporis ullam maxime mollitia ipsum, veniam quibusdam labore? Sunt minima aliquid obcaecati aperiam delectus!
+                        </p>
+                    </div>
+                    <img className="flex-1" src="assets/principal.jpg" alt="Principal" />
+                </div>
+
+            </section>
+
+            {/* gallery  */}
+            <section id="gallery" className="mt-20">
+                <h2 className="text-3xl font-bold text-center mb-8">Gallery</h2>
+                <div className="flex gap-4 justify-center md:justify-between flex-wrap">
+                    {galleryImages.map((item, index) => {
+                        if (index > 10) return;
+                        return <img className="h-[200px] object-contain rounded" key={index} src={item.secure_url} alt={item.public_id} />
+                    })
+                    }
+                </div>
+            </section>
+
+
+            {/* contact us  */}
+            <section id="contactus" className="mb-20">
+                <h2 className="text-center text-3xl font-bold mb-10">Contact Us</h2>
+
+                <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-8">
+                    <div className="text-gray-700 w-[300px]">
+                        <p className="text-justify text-base">Submit your query here. We provide 24/7 contact support to your queries. Please don't hesitate to directly contact us.</p>
+                        <p className="mt-4">You can visit us here</p>
+                        <p className="flex gap-2 text-sm">
+                            <span className="font-bold">Location:</span>
+                            <span>Urlabari, Morang</span>
+                        </p>
+                        <p className="mt-4">You can email us here</p>
+                        <p className="flex gap-2 text-sm">
+                            <span className="font-bold">Email:</span>
+                            <span>contact@school.com</span>
+                        </p>
+                        <p className="mt-4">You can contact us on</p>
+                        <p className="flex gap-2 text-sm">
+                            <span className="font-bold">Phone:</span>
+                            <span>9820342081</span>
+                        </p>
+                    </div>
+
+                    <form className="w-[300px] flex flex-col gap-4 text-sm border border-gray-200 p-4 rounded ">
+
+                        <input className="border border-gray-400 p-1 rounded" type="text" placeholder="FullName" />
+                        <input className="border border-gray-400 p-1 rounded" type="email" placeholder="Email" />
+                        <input className="border border-gray-400 p-1 rounded" type="text" placeholder="Subject" />
+                        <textarea className="border border-gray-400 p-1 rounded" rows="5"></textarea>
+                        <button className="bg-blue-500 py-2 capitalize text-white font-medium rounded-sm">submit</button>
+                    </form>
+                </div>
+
+                {/* google map  */}
+                <section className="mt-10">
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14261.868704355478!2d87.62277282417531!3d26.66553725483989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e58ebe21f9dadf%3A0x50d0725189935987!2sUrlabari%20Chowk!5e0!3m2!1sen!2snp!4v1702960175217!5m2!1sen!2snp" className="w-full h-[400px]" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+                </section>
+            </section>
+
+
+
+
+        </main>
+    )
+}
+
+async function getCarouselImages() {
+    const folder = 'school/carousel'; // Specify the folder name
+    const res = await getImagesInFolder(folder);
+
+    return res;
+}
+
+async function getGallery() {
+    const folder = 'school/gallery';
+    return await getImagesInFolder(folder);
 }
